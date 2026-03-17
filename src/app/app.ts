@@ -11,8 +11,8 @@ export class App {
   private readonly router = inject(Router);
 
   constructor() {
-    if(this.router.lastSuccessfulNavigation) {
-      console.log('lastSuccessfulNavigation', this.router.lastSuccessfulNavigation.finalUrl);
+    if(this.router.lastSuccessfulNavigation()) {
+      console.log('lastSuccessfulNavigation', this.router.lastSuccessfulNavigation().finalUrl);
     }
   }
 }
