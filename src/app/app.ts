@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,11 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'migration-router-last-successful-navigation';
+  private readonly router = inject(Router);
+
+  constructor() {
+    if(this.router.lastSuccessfulNavigation) {
+      console.log('lastSuccessfulNavigation', this.router.lastSuccessfulNavigation.finalUrl);
+    }
+  }
 }
